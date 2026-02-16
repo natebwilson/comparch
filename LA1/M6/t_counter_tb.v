@@ -23,6 +23,7 @@ module testbench;
   end
 
   initial begin
+    $display("begin sim");
     //initial reset
     reset = 1;
     #10;
@@ -42,5 +43,12 @@ module testbench;
     //continue running 5 more cycles
     #50;
   end
+  initial begin
+      #(300);
+      $finish;
+  end
 
+  initial begin
+      $dumpvars(0,testbench);
+  end
 endmodule

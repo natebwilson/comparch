@@ -1,0 +1,27 @@
+[*]
+[*] GTKWave Analyzer v3.4.0 (w)1999-2022 BSI
+[*] Mon Feb 16 21:52:15 2026
+[*]
+[dumpfile] "/home/nateb/classes/comparch/LA1/M6/_build/default/t_counter_tb.vcd"
+[dumpfile_mtime] "Mon Feb 16 21:51:37 2026"
+[dumpfile_size] 1836
+[savefile] "/home/nateb/classes/comparch/LA1/M6/t_counter_tb.gtkw"
+[timestart] 0
+[size] 1513 842
+[pos] -1 -1
+*-16.616877 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] testbench.
+[sst_width] 297
+[signals_width] 78
+[sst_expanded] 1
+[sst_vpaned_height] 242
+@28
+testbench.dut.T0
+testbench.dut.T1
+testbench.dut.T2
+testbench.dut.T3
+testbench.dut.T4
+testbench.dut.clock
+testbench.dut.reset
+[pattern_trace] 1
+[pattern_trace] 0
