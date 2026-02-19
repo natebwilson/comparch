@@ -21,7 +21,7 @@ module testbench;
 
   initial begin
     #40;
-    $display("\n \nbegin sim");
+    $display("\n \n Begin Testing \n ");
     //initial reset
 
     $display("Set ALUOp 00");
