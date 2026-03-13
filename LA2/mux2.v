@@ -1,0 +1,14 @@
+module mux2
+#(parameter WIDTH = 8)
+ (
+ input [WIDTH-1:0] d0,
+ input [WIDTH-1:0] d1,
+ input sel,
+ output [WIDTH-1:0] y
+ );
+// Your implementation here
+
+assign y = sel ? d1 : d0;
+
+endmodule
+
