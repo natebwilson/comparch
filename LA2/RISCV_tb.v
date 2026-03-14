@@ -12,7 +12,7 @@ module testbench;
    wire        ROM_CS;
    wire [31:0] WriteData;
 
-   localparam SIMULATION_END = 5000;
+   localparam SIMULATION_END = 10000;
 
    reset_clock	b2v_reset_clock_0(
 	.reset(reset),
@@ -60,6 +60,23 @@ module testbench;
         $display("x5 = %0d (0x%h)", b2v_RISCV.b2v_datapath_0.b2v_rf_0.Q[5], b2v_RISCV.b2v_datapath_0.b2v_rf_0.Q[5]);
         $display("x6 = %0d (0x%h)", b2v_RISCV.b2v_datapath_0.b2v_rf_0.Q[6], b2v_RISCV.b2v_datapath_0.b2v_rf_0.Q[6]);
         $display("x7 = %0d (0x%h)", b2v_RISCV.b2v_datapath_0.b2v_rf_0.Q[7], b2v_RISCV.b2v_datapath_0.b2v_rf_0.Q[7]);
+
+        // Verify sb x8, 4(x31): RAM at address 0x2004 (RAM[1]) should be 0x000000FF
+        $display("");
+        $display("--- Store Byte / Store Halfword Verification ---");
+        $display("RAM[0x2004] = 0x%h (expected 0x000000ff)", b2v_RAM_0.RAM[1]);
+        if (b2v_RAM_0.RAM[1] === 32'h000000ff)
+          $display("  PASS: sb x8, 4(x31) correctly wrote byte to RAM[0x2004]");
+        else
+          $display("  FAIL: sb x8, 4(x31) did not produce expected value at RAM[0x2004]");
+
+        // Verify sh x10, 8(x31): RAM at address 0x2008 (RAM[2]) should be 0x0000FFFF
+        $display("RAM[0x2008] = 0x%h (expected 0x0000ffff)", b2v_RAM_0.RAM[2]);
+        if (b2v_RAM_0.RAM[2] === 32'h0000ffff)
+          $display("  PASS: sh x10, 8(x31) correctly wrote halfword to RAM[0x2008]");
+        else
+          $display("  FAIL: sh x10, 8(x31) did not produce expected value at RAM[0x2008]");
+
       $finish;
    end
 

@@ -19,6 +19,8 @@ module cpu
    wire 	      PCWrite;
    wire 	      RegWrite;
    wire [1:0] 	      ResultSrc;
+   wire [2:0]  LoadType;
+   wire [1:0]  StoreType;
 
    controller	b2v_controller_0(
 	.reset(reset),
@@ -36,7 +38,9 @@ module cpu
 	.IRWrite(IRWrite),
 	.PCWrite(PCWrite),
 	.RegWrite(RegWrite),
-	.MemWrite(MemWrite));
+	.MemWrite(MemWrite),
+  .LoadType(LoadType),
+  .StoreType(StoreType));
 
    datapath	b2v_datapath_0(
 	.reset(reset),
@@ -50,6 +54,8 @@ module cpu
 	.IRWrite(IRWrite),
 	.PCWrite(PCWrite),
 	.ReadData(ReadData),
+  .LoadType(LoadType),
+  .StoreType(StoreType),
 	.op(op),
 	.funct3(funct3),
 	.funct7b5(funct7b5),
