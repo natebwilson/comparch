@@ -7,7 +7,7 @@ module cpu
    output [31:0] WriteData);
 
    wire 	      AdrSrc;
-   wire [2:0] 	      ALUControl;
+   wire [3:0] 	      ALUControl;
    wire [1:0] 	      ALUSrcA;
    wire [1:0] 	      ALUSrcB;
    wire [3:0] 	      flags;

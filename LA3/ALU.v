@@ -10,7 +10,7 @@ module ALU(
 	wire cout;
 	
 	wire Condition1;
-	assign Condition1 = (~ALUControl[3] & ~ALUcontrol[2] & ~ALUcontrol[1]) | (~ALUControl[3] & ~ALUcontrol[1] & ALUcontrol[0]);
+	assign Condition1 = (~ALUcontrol[3] & ~ALUcontrol[2] & ~ALUcontrol[1]) | (~ALUcontrol[3] & ~ALUcontrol[1] & ALUcontrol[0]);
 	
 	wire Condition2;
 	assign Condition2 = (A[31] ^ sum[31]);

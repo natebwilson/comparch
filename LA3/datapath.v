@@ -6,7 +6,7 @@ module datapath
    input [1:0] 	 ALUSrcB,
    input [1:0] 	 ResultSrc,
    input 	 AdrSrc,
-   input [2:0] 	 ALUControl,
+   input [3:0] 	 ALUControl,
    input 	 IRWrite,
    input 	 PCWrite,
    input 	 RegWrite,

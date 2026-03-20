@@ -60,6 +60,9 @@ module testbench;
         $display("x5 = %0d (0x%h)", b2v_RISCV.b2v_datapath_0.b2v_rf_0.Q[5], b2v_RISCV.b2v_datapath_0.b2v_rf_0.Q[5]);
         $display("x6 = %0d (0x%h)", b2v_RISCV.b2v_datapath_0.b2v_rf_0.Q[6], b2v_RISCV.b2v_datapath_0.b2v_rf_0.Q[6]);
         $display("x7 = %0d (0x%h)", b2v_RISCV.b2v_datapath_0.b2v_rf_0.Q[7], b2v_RISCV.b2v_datapath_0.b2v_rf_0.Q[7]);
+        $display("x8 = %0d (0x%h)", b2v_RISCV.b2v_datapath_0.b2v_rf_0.Q[8], b2v_RISCV.b2v_datapath_0.b2v_rf_0.Q[8]);
+        $display("x9 = %0d (0x%h)", b2v_RISCV.b2v_datapath_0.b2v_rf_0.Q[9], b2v_RISCV.b2v_datapath_0.b2v_rf_0.Q[9]);
+        $display("x10 = %0d (0x%h)", b2v_RISCV.b2v_datapath_0.b2v_rf_0.Q[10], b2v_RISCV.b2v_datapath_0.b2v_rf_0.Q[10]);
 
         // Verify sb x8, 4(x31): RAM at address 0x2004 (RAM[1]) should be 0x000000FF
         $display("");

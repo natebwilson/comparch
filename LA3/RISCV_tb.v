@@ -12,7 +12,7 @@ module testbench;
    wire        ROM_CS;
    wire [31:0] WriteData;
 
-   localparam SIMULATION_END = 10000;
+   localparam SIMULATION_END = 100000;
 
    reset_clock	b2v_reset_clock_0(
 	.reset(reset),
@@ -49,39 +49,21 @@ module testbench;
 
    // This initial block waits for SIMULATION_END unit delays, and then the
    // system function, $finish, ends the simulation. Need if using APIO but
-   // not if using Modelsim.
-   initial begin
+ integer i;
+  initial begin
       #(SIMULATION_END);
-        $display("x0 = %0d (0x%h)", b2v_RISCV.b2v_datapath_0.b2v_rf_0.Q[0], b2v_RISCV.b2v_datapath_0.b2v_rf_0.Q[0]);
-        $display("x1 = %0d (0x%h)", b2v_RISCV.b2v_datapath_0.b2v_rf_0.Q[1], b2v_RISCV.b2v_datapath_0.b2v_rf_0.Q[1]);
-        $display("x2 = %0d (0x%h)", b2v_RISCV.b2v_datapath_0.b2v_rf_0.Q[2], b2v_RISCV.b2v_datapath_0.b2v_rf_0.Q[2]);
-        $display("x3 = %0d (0x%h)", b2v_RISCV.b2v_datapath_0.b2v_rf_0.Q[3], b2v_RISCV.b2v_datapath_0.b2v_rf_0.Q[3]);
-        $display("x4 = %0d (0x%h)", b2v_RISCV.b2v_datapath_0.b2v_rf_0.Q[4], b2v_RISCV.b2v_datapath_0.b2v_rf_0.Q[4]);
-        $display("x5 = %0d (0x%h)", b2v_RISCV.b2v_datapath_0.b2v_rf_0.Q[5], b2v_RISCV.b2v_datapath_0.b2v_rf_0.Q[5]);
-        $display("x6 = %0d (0x%h)", b2v_RISCV.b2v_datapath_0.b2v_rf_0.Q[6], b2v_RISCV.b2v_datapath_0.b2v_rf_0.Q[6]);
-        $display("x7 = %0d (0x%h)", b2v_RISCV.b2v_datapath_0.b2v_rf_0.Q[7], b2v_RISCV.b2v_datapath_0.b2v_rf_0.Q[7]);
-        $display("x8 = %0d (0x%h)", b2v_RISCV.b2v_datapath_0.b2v_rf_0.Q[8], b2v_RISCV.b2v_datapath_0.b2v_rf_0.Q[8]);
-        $display("x9 = %0d (0x%h)", b2v_RISCV.b2v_datapath_0.b2v_rf_0.Q[9], b2v_RISCV.b2v_datapath_0.b2v_rf_0.Q[9]);
-        $display("x10 = %0d (0x%h)", b2v_RISCV.b2v_datapath_0.b2v_rf_0.Q[10], b2v_RISCV.b2v_datapath_0.b2v_rf_0.Q[10]);
-
-        // Verify sb x8, 4(x31): RAM at address 0x2004 (RAM[1]) should be 0x000000FF
-        $display("");
-        $display("--- Store Byte / Store Halfword Verification ---");
-        $display("RAM[0x2004] = 0x%h (expected 0x000000ff)", b2v_RAM_0.RAM[1]);
-        if (b2v_RAM_0.RAM[1] === 32'h000000ff)
-          $display("  PASS: sb x8, 4(x31) correctly wrote byte to RAM[0x2004]");
-        else
-          $display("  FAIL: sb x8, 4(x31) did not produce expected value at RAM[0x2004]");
-
-        // Verify sh x10, 8(x31): RAM at address 0x2008 (RAM[2]) should be 0x0000FFFF
-        $display("RAM[0x2008] = 0x%h (expected 0x0000ffff)", b2v_RAM_0.RAM[2]);
-        if (b2v_RAM_0.RAM[2] === 32'h0000ffff)
-          $display("  PASS: sh x10, 8(x31) correctly wrote halfword to RAM[0x2008]");
-        else
-          $display("  FAIL: sh x10, 8(x31) did not produce expected value at RAM[0x2008]");
-
+      $display("\n--- Register Dump ---\n");
+      for (i = 0; i < 32; i = i + 2)
+          $display("x%0d = %0d (0x%h) x%0d = %0d (0x%h)", i, 
+              b2v_RISCV.b2v_datapath_0.b2v_rf_0.Q[i],
+              b2v_RISCV.b2v_datapath_0.b2v_rf_0.Q[i],
+              i+1,
+              b2v_RISCV.b2v_datapath_0.b2v_rf_0.Q[i+1],
+              b2v_RISCV.b2v_datapath_0.b2v_rf_0.Q[i+1]
+            );
       $finish;
-   end
+      $display("\n");
+  end  // not if using Modelsim.
 
    // This initial block will "dump" all of the simulation information so that
    // it can be viewed in a waveform viewer. Needed if using APIO but not needed

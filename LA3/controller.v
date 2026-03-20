@@ -10,7 +10,7 @@ module controller
    output 	RegWrite,
    output 	MemWrite,
    output 	PCWrite,
-   output [2:0] ALUControl,
+   output [3:0] ALUControl,
    output [1:0] ALUSrcA,
    output [1:0] ALUSrcB,
    output [2:0] ImmSrc,
